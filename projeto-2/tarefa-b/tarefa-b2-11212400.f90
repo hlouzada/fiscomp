@@ -47,7 +47,7 @@ PROGRAM bebado
                 
                 CLOSE(10)
 
-                WRITE(*,'("<x**2>: ",1F0.3," <x>: ",1F0.3)') sqrt(amediaq/M), amedia/M
+                WRITE(*,'("<x**2>: ",1F0.3," <x>: ",1F0.3)') amediaq/M, amedia/M
 
                 WRITE(*,*)
         end do

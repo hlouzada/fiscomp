@@ -37,6 +37,6 @@ PROGRAM bebado
                 WRITE(*,'(SP,I0,"º posição: ",SS,I0)') i,ipos(i+N+1)
         end do
         
-        WRITE(*,'("<x**2>: ",1F0.3," <x>: ",1F0.3)') sqrt(amediaq/M), amedia/M
+        WRITE(*,'("<x**2>: ",1F0.3," <x>: ",1F0.3)') amediaq/M, amedia/M
 
 END PROGRAM bebado
