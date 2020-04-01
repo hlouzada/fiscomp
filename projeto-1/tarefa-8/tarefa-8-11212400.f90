@@ -26,13 +26,13 @@ PROGRAM dimensoes
         END DO
 
         Vd = (pi**(i/2e0) * R**i) / dgamma
-        OPEN(unit=10, file='saida-8-11212400')
+        WRITE(10,'(I0,", ",F0.8)') i, Vd
         
         VA = 1e0/Vd
-        WRITE(11, '(I0," ",F0.8)') i, VA
+        WRITE(11, '(I0,", ",F0.8)') i, VA
 
         VB = 1e0/(Vd*10e-4**i)
-        WRITE(12, '(I0," ",F0.8)') i, VB
+        WRITE(12, '(I0,", ",F0.8)') i, VB
 
     END DO
 

@@ -83,7 +83,7 @@
 @timestamp rot 0
 @timestamp font 0
 @timestamp char size 1.000000
-@timestamp def "Wed Mar 11 18:33:13 2020"
+@timestamp def "Tue Mar 31 21:12:44 2020"
 @r0 off
 @link r0 to g0
 @r0 type above
@@ -130,20 +130,20 @@
 @g0 fixedpoint format general general
 @g0 fixedpoint prec 6, 6
 @with g0
-@    world 10, 2e+39, 16, 2e+42
+@    world -200, 0, 200, 3000000
 @    stack world 0, 0, 0, 0
 @    znorm 1
 @    view 0.150000, 0.150000, 1.150000, 0.850000
-@    title "Grafico 3"
+@    title "Histograma dos Bêbados"
 @    title font 0
 @    title size 1.500000
 @    title color 1
-@    subtitle "Nº de Av. X d (Mono-log)"
+@    subtitle "Posição X Quantidade"
 @    subtitle font 0
 @    subtitle size 1.000000
 @    subtitle color 1
 @    xaxes scale Normal
-@    yaxes scale Logarithmic
+@    yaxes scale Normal
 @    xaxes invert off
 @    yaxes invert off
 @    xaxis  on
@@ -153,7 +153,7 @@
 @    xaxis  bar color 1
 @    xaxis  bar linestyle 1
 @    xaxis  bar linewidth 1.0
-@    xaxis  label "d"
+@    xaxis  label "Posição"
 @    xaxis  label layout para
 @    xaxis  label place auto
 @    xaxis  label char size 1.000000
@@ -161,7 +161,7 @@
 @    xaxis  label color 1
 @    xaxis  label place normal
 @    xaxis  tick on
-@    xaxis  tick major 2
+@    xaxis  tick major 100
 @    xaxis  tick minor ticks 1
 @    xaxis  tick default 6
 @    xaxis  tick place rounded true
@@ -178,7 +178,7 @@
 @    xaxis  tick minor size 0.500000
 @    xaxis  ticklabel on
 @    xaxis  ticklabel format general
-@    xaxis  ticklabel prec 9
+@    xaxis  ticklabel prec 5
 @    xaxis  ticklabel formula ""
 @    xaxis  ticklabel append ""
 @    xaxis  ticklabel prepend ""
@@ -204,7 +204,7 @@
 @    yaxis  bar color 1
 @    yaxis  bar linestyle 1
 @    yaxis  bar linewidth 1.0
-@    yaxis  label "Nº de Avogrado"
+@    yaxis  label "Quantidade"
 @    yaxis  label layout para
 @    yaxis  label place auto
 @    yaxis  label char size 1.000000
@@ -212,8 +212,8 @@
 @    yaxis  label color 1
 @    yaxis  label place normal
 @    yaxis  tick on
-@    yaxis  tick major 10
-@    yaxis  tick minor ticks 9
+@    yaxis  tick major 500000
+@    yaxis  tick minor ticks 1
 @    yaxis  tick default 6
 @    yaxis  tick place rounded true
 @    yaxis  tick in
@@ -320,21 +320,185 @@
 @    s0 errorbar riser linestyle 1
 @    s0 errorbar riser clip off
 @    s0 errorbar riser clip length 0.100000
-@    s0 comment "saida-8b-11212400"
+@    s0 comment "saida-b1-11212400"
 @    s0 legend  ""
 @target G0.S0
 @type xy
-2 318309.84
-3 2.3873236e+08
-4 2.0264231e+11
-5 1.8997717e+14
-6 1.9350912e+17
-7 2.116506e+20
-8 2.4638345e+23
-9 3.0316711e+26
-10 3.9213139e+29
-11 5.3075596e+32
-12 7.4891563e+35
-13 1.0981419e+39
-14 1.6678328e+42
+-178 1
+-174 2
+-172 3
+-170 1
+-168 3
+-166 2
+-164 5
+-162 4
+-160 6
+-158 6
+-156 13
+-154 15
+-152 10
+-150 22
+-148 36
+-146 53
+-144 71
+-142 97
+-140 111
+-138 149
+-136 200
+-134 291
+-132 367
+-130 501
+-128 663
+-126 916
+-124 1172
+-122 1442
+-120 1735
+-118 2348
+-116 2894
+-114 3756
+-112 4733
+-110 5965
+-108 7266
+-106 9231
+-104 11187
+-102 13945
+-100 17029
+-98 20197
+-96 24928
+-94 30639
+-92 36392
+-90 44163
+-88 52295
+-86 62878
+-84 74250
+-82 86870
+-80 103325
+-78 120674
+-76 141244
+-74 163000
+-72 189093
+-70 218354
+-68 249976
+-66 285963
+-64 324917
+-62 368412
+-60 417283
+-58 468260
+-56 526392
+-54 586728
+-52 652683
+-50 723062
+-48 798501
+-46 876539
+-44 958472
+-42 1045954
+-40 1135223
+-38 1229005
+-36 1321110
+-34 1417189
+-32 1512848
+-30 1612173
+-28 1704598
+-26 1800450
+-24 1891370
+-22 1980361
+-20 2065868
+-18 2145378
+-16 2216901
+-14 2286586
+-12 2346938
+-10 2398953
+-8 2444429
+-6 2475828
+-4 2499910
+-2 2516224
+0 2521204
+2 2517544
+4 2498521
+6 2476227
+8 2444414
+10 2400988
+12 2345236
+14 2286963
+16 2218785
+18 2143929
+20 2065864
+22 1978688
+24 1893028
+26 1799861
+28 1707392
+30 1609560
+32 1512130
+34 1416546
+36 1322121
+38 1228702
+40 1135635
+42 1044601
+44 958782
+46 877507
+48 797648
+50 723497
+52 652582
+54 587275
+56 524961
+58 469598
+60 417235
+62 369194
+64 324396
+66 285377
+68 249299
+70 218231
+72 189651
+74 164109
+76 140084
+78 120187
+80 103402
+82 87527
+84 74484
+86 62567
+88 52794
+90 43631
+92 36803
+94 30518
+96 25013
+98 20819
+100 16776
+102 13722
+104 11333
+106 9114
+108 7470
+110 5846
+112 4661
+114 3684
+116 2889
+118 2383
+120 1851
+122 1434
+124 1096
+126 902
+128 711
+130 507
+132 373
+134 264
+136 219
+138 155
+140 113
+142 85
+144 75
+146 60
+148 29
+150 27
+152 20
+154 13
+156 6
+158 6
+160 12
+162 2
+164 1
+166 2
+168 4
+170 3
+172 3
+174 1
+180 1
 &
