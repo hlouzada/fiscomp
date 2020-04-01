@@ -1,9 +1,9 @@
-program entropia
+PROGRAM entropia
 
        PARAMETER (M = 400)
        PARAMETER (N = 1000000)
        PARAMETER (pi = 4e0*atan(1e0))
-       dimension pos(M,2), Prob(0:5000*5000)
+       DIMENSION pos(M,2), Prob(0:5000*5000)
    
        pos = 0
        Prob = 0
@@ -22,6 +22,6 @@ program entropia
    
        Prob = Prob/M
    
-       write(*,*) Prob
+       WRITE(*,*) Prob
    
-end program entropia
+END PROGRAM entropia
