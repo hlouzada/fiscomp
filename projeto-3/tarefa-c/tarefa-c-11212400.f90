@@ -1,4 +1,4 @@
-PROGRAM tarefac
+PROGRAM raiz
     real*8 erro, nmax, desv_direto, desv_newton, desv_seccante
     real*8 f, df, x, a, b, x_direto, x1_secante, x0_newton, x0_secante, x_secante, x_newton
     logical flag_direta, flag_newton, flag_sececante
@@ -60,4 +60,4 @@ PROGRAM tarefac
         WRITE(*,*) n, x_direto, x_newton, x_secante
         n = n + 1
     END DO
-END PROGRAM tarefac
+END PROGRAM raiz
