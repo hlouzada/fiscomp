@@ -1,6 +1,6 @@
 PROGRAM tarefac
     real*8 erro, nmax, h, desv_direto, desv_newton, desv_seccante
-    real*8 f, df, x, a, b, x_direto, x0_secante, x0_newton, df_secante, x_secante, x_newton
+    real*8 f, df, x, a, b, x_direto, x1_secante, x0_newton, x0_secante, x_secante, x_newton
     logical flag_direta, flag_newton, flag_sececante
     
     f(x) = x**3 - 21*x - 20
@@ -8,13 +8,15 @@ PROGRAM tarefac
 
     erro = 10d-6
     nmax = 100
-    h = 0.005
-    x0_secante = -1.5
-    df_secante = -3
-    x0_newton = -10
-    a = 10
-    b = -10
     n = 0
+
+    WRITE(*,*) "Digite os valores que compreendem as raizes para a busca direta (ex: 10 -10):"
+    READ(*,*) a, b
+    WRITE(*,*) "Digite os valores de X_0 para o metodo de Newton-Raphson (ex: -10):"
+    READ(*,*) x0_newton
+    WRITE(*,*) "Digite os valores de X_0 e X_(-1) para o metodo da secante (ex: -2 -2.5):"
+    READ(*,*) x1_secante, x0_secante
+
 
     desv_direto = 2*erro
     desv_newton = 2*erro
@@ -25,6 +27,7 @@ PROGRAM tarefac
     flag_sececante = .true.
 
     OPEN(10, file='saida-c-11212400')
+    WRITE(10,*) "Iteração", "Procura Direta", "Newton-Raphson", "Metodo da Secante"
     DO WHILE ( (n <= nmax) .and. (flag_direta .or. flag_newton .or. flag_sececante) )
         IF ( desv_direto**2 .gt. erro**2 ) THEN
             x_direto = (a+b)/2
@@ -47,14 +50,15 @@ PROGRAM tarefac
         END IF
             
         IF ( desv_seccante**2 .gt. erro**2 ) THEN
-            x_secante = x0_secante - f(x0_secante)*(x0_secante - df_secante)/(f(x0_secante) - f(df_secante))
-            df_secante = x0_secante
-            desv_seccante = f(x_secante) - f(x0_secante)
-            x0_secante = x_secante
+            x_secante = x1_secante - f(x1_secante)*(x1_secante - x0_secante)/(f(x1_secante) - f(x0_secante))
+            x0_secante = x1_secante
+            desv_seccante = f(x_secante) - f(x1_secante)
+            x1_secante = x_secante
         ELSE
             flag_sececante = .false.
         END IF
 
+        WRITE(10,*) n, x_direto, x_newton, x_secante
         WRITE(*,*) n, x_direto, x_newton, x_secante
         n = n + 1
     END DO

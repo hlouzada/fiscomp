@@ -59,9 +59,10 @@ PROGRAM integral
     val_integralf = pri_f(a) - pri_f(b)
 
     OPEN(10, file='saida-b-11212400')
+    WRITE(10,*) "N", "h", "Regra do Trapezio", "Regra de Simpson", "Regra de Bode"
     DO j = 2, 12
         n = 2**j
-        write(10,*) (b-a)/n, abs(val_integralf - regra_trapezio(a, b, n)), & 
+        WRITE(10,*) (b-a)/n, abs(val_integralf - regra_trapezio(a, b, n)), & 
         abs(val_integralf - regra_simpson(a, b, n)), abs(val_integralf - regra_bode(a, b, n))
     END DO
 
