@@ -10,14 +10,6 @@ PROGRAM tarefac
     nmax = 100
     n = 0
 
-    WRITE(*,*) "Digite os valores que compreendem as raizes para a busca direta (ex: 10 -10):"
-    READ(*,*) a, b
-    WRITE(*,*) "Digite os valores de X_0 para o metodo de Newton-Raphson (ex: -10):"
-    READ(*,*) x0_newton
-    WRITE(*,*) "Digite os valores de X_0 e X_(-1) para o metodo da secante (ex: -2 -2.5):"
-    READ(*,*) x1_secante, x0_secante
-
-
     desv_direto = 2*erro
     desv_newton = 2*erro
     desv_seccante = 2*erro
@@ -25,6 +17,13 @@ PROGRAM tarefac
     flag_direta = .true.
     flag_newton = .true.
     flag_sececante = .true.
+
+    WRITE(*,*) "Digite os valores que compreendem as raizes para a busca direta (ex: 10 -10):"
+    READ(*,*) a, b
+    WRITE(*,*) "Digite os valores de X_0 para o metodo de Newton-Raphson (ex: -10):"
+    READ(*,*) x0_newton
+    WRITE(*,*) "Digite os valores de X_0 e X_(-1) para o metodo da secante (ex: -2 -2.5):"
+    READ(*,*) x1_secante, x0_secante
 
     OPEN(10, file='saida-c-11212400')
     WRITE(10,*) "Iteração", "Procura Direta", "Newton-Raphson", "Metodo da Secante"
