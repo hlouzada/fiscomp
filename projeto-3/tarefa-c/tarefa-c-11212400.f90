@@ -1,5 +1,5 @@
 PROGRAM tarefac
-    real*8 erro, nmax, h, desv_direto, desv_newton, desv_seccante
+    real*8 erro, nmax, desv_direto, desv_newton, desv_seccante
     real*8 f, df, x, a, b, x_direto, x1_secante, x0_newton, x0_secante, x_secante, x_newton
     logical flag_direta, flag_newton, flag_sececante
     
