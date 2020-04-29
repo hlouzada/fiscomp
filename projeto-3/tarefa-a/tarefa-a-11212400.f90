@@ -1,8 +1,8 @@
 PROGRAM derivada
-    REAL*16 f, df, d2f, d3f, dfrente2p, dtras2p, dsimetrica3p, dsimetrica5p, d2simetrica5p, d3antisimetrica5p
-    REAL*16 x, h, ih
-    REAL*16 val_df, val_d2f, val_d3f, val_dfrente2p, val_dtras2p
-    REAL*16 val_dsimetrica3p, val_dsimetrica5p, val_d2simetrica5p, val_d3antisimetrica5p
+    REAL*8 f, df, d2f, d3f, dfrente2p, dtras2p, dsimetrica3p, dsimetrica5p, d2simetrica5p, d3antisimetrica5p
+    REAL*8 x, h, ih
+    REAL*8 val_df, val_d2f, val_d3f, val_dfrente2p, val_dtras2p
+    REAL*8 val_dsimetrica3p, val_dsimetrica5p, val_d2simetrica5p, val_d3antisimetrica5p
     DIMENSION h(14)
 
     f(x) = sinh(2*x)*sin(x/4)
