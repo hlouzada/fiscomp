@@ -25,8 +25,6 @@ PROGRAM derivada
     val_d3f = d3f(x)
     
     OPEN(10, file='saida-a-11212400')
-    WRITE(10,*) "h", "Derivada simetrica 3 pontos", "Derivada p/frente 2 pontos", "Derivada simetrica 5 pontos", &
-                "Derivada segunda simetrica 5 pontos", "Derivada terceira anti-simetrica 5 pontos"
     DO i = 1, 14
 
         val_dfrente2p = dfrente2p(x, h(i))

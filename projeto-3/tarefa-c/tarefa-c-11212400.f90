@@ -26,7 +26,6 @@ PROGRAM tarefac
     READ(*,*) x1_secante, x0_secante
 
     OPEN(10, file='saida-c-11212400')
-    WRITE(10,*) "Iteração", "Procura Direta", "Newton-Raphson", "Metodo da Secante"
     DO WHILE ( (n <= nmax) .and. (flag_direta .or. flag_newton .or. flag_sececante) )
         IF ( desv_direto**2 .gt. erro**2 ) THEN
             x_direto = (a+b)/2
