@@ -2,9 +2,9 @@ PROGRAM tarefa_c
     PARAMETER(pi = 4e0*atan(1e0))
 
     ! Calculo da posicao usando a subrotina definida
-    CALL calculo_posicao(-pi/4, 1) ! alpha = -pi/4
-    CALL calculo_posicao(0e0, 2)     ! alpha = 0
-    CALL calculo_posicao(pi/4, 3)  ! alpha = pi/4
+    CALL calculo_posicao(-pi/4, 1)  ! alpha = -pi/4
+    CALL calculo_posicao(0e0, 2)    ! alpha = 0
+    CALL calculo_posicao(pi/4, 3)   ! alpha = pi/4
 
 CONTAINS
 
