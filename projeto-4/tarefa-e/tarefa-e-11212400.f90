@@ -15,11 +15,11 @@ CONTAINS
 
         ! Definicao das variaveis inicias e constantes
         t = 0e0
-        r = (/0e0, 1e3/)
+        r = (/0e0, 1e2/)
         v = 1e1*(/cos(alpha), sin(alpha)/)
         g = (/0e0, 1e1/)
         d = (/3e-1, 3e-1/)
-        e = 10e-3
+        e = 1e-4
 
         ! Formatacao para o nome do arquivo de saida
         WRITE(filename,'(A,I0,A)') 'saida-e-alpha',i,'-11212400'

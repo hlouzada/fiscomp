@@ -15,10 +15,10 @@ CONTAINS
 
         ! Definicao das variaveis inicias e constantes
         t = 0e0
-        r = 100e0
+        r = 1e2
         v = v0
-        g = 10e0
-        e = 10e-3
+        g = 1e1
+        e = 1e-4
 
         ! Formatacao para o nome do arquivo de saida
         WRITE(filename,'(A,2(I0,A))') 'saida-b-gamma',i,'-vo',j,'-11212400'
