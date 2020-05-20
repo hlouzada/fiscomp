@@ -15,7 +15,7 @@ CONTAINS
 
         ! Definicao das variaveis inicias e constantes
         t = 0e0
-        r = 1e2
+        r = 1e3
         v = v0
         g = 1e1
         e = 1e-4
