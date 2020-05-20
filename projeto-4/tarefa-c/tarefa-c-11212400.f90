@@ -25,6 +25,12 @@ CONTAINS
 
         OPEN(10, file=filename)
 
+        ! Calcular os valores inicias
+        a = -g
+        v = v + (e/2)*a
+        r = r + e*v
+        t = t + e
+
         ! Calculo da velocidade e da posicao em funcao do tempo, enquanto a pos for positiva
         DO WHILE (r(2).GE.0)
             WRITE(10, '(F0.6,4(" ",F0.6))') t, r, v ! Escrever as variaveis no arquivo de saida
