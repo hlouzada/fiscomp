@@ -34,6 +34,7 @@ CONTAINS
         a_m = 1d0
         e = 3d-2 ! delta_t
         i = 0
+        n = 1
 
         ! Calculo da velocidade e da posicao angular em funcao da variacao do tempo, enquanto o tempo for menor que tmax
         ! Pendulo amortecido forcado
@@ -52,11 +53,12 @@ CONTAINS
             theta = theta_i + omega*e
 
             ! Calculo da secao de Poincare
-            DO n=-int(tmax/e)/2, int(tmax/e)/2
-                IF(abs(i*e-((n*pi)/C_omega)).LT.(e/2d0)) THEN
-                    WRITE(10,'(F0.16,1(" ",F0.16))') theta, omega
-                END IF
-            END DO
+            IF(abs(i*e-((n*pi)/C_omega)).LT.(e/2d0)) THEN
+                
+                WRITE(10,'(F0.16,1(" ",F0.16))') theta, omega
+
+                n = n + 1
+            END IF
 
             i = i + 1
         END DO
