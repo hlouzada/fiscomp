@@ -28,7 +28,7 @@ CONTAINS
         gamma = 5d-1
         C_omega = 2d0/3d0
         omega = 0d0
-        tmax = 1.2d2
+        tmax = 5.2d3
         g = 9.8d0
         a_l = 9.8d0
         a_m = 1d0
