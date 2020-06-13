@@ -44,7 +44,10 @@ CONTAINS
             omega_i = omega
             theta_i = theta
             
-            omega = omega_i - g*sin(theta_i)*e/a_l - gamma*omega_i*e + F_0*sin(C_omega*e*i)*e
+            ! aceleracao angular
+            a = -((g/a_l)*sin(theta_i))-(gamma*omega_i)+(F_0*sin(C_omega*i*e))
+
+            omega = omega_i + a*e
             theta = theta_i + omega*e
 
             WRITE(10, '(F0.6,2(" ",F0.6))') e*i, theta, omega ! Escrever as variaveis no arquivo de saida

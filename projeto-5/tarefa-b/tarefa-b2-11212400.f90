@@ -12,19 +12,19 @@ PROGRAM tarefa_b
     DO j = 1, 10
 
         ! Definicao das variaveis inicias e constantes
-        theta_0 = mod(rand(), pi/2)
+        theta_0 = mod(rand() + 1d-2, pi/2)
         theta = theta_0
         
         F_0 = 0d0
         gamma = 0d0
-        C_omega = 0d0
-        omega = 0d0
+        C_omega = 0d0 ! OMEGA
+        omega = 0d0 ! omega
         S_T = 0d0
         tmax = 1.2d2
         g = 9.8d0
         a_l = 9.8d0
         a_m = 1d0
-        e = 1d-4
+        e = 1d-4 ! delta_t
         t_0 = 0d0
         i = 0
         n = 0
@@ -38,7 +38,10 @@ PROGRAM tarefa_b
             omega_i = omega
             theta_i = theta
             
-            omega = omega_i - g*sin(theta_i)*e/a_l - gamma*omega_i*e + F_0*sin(C_omega*e*i)*e
+            ! aceleracao angular
+            a = -((g/a_l)*sin(theta_i))-(gamma*omega_i)+(F_0*sin(C_omega*i*e))
+
+            omega = omega_i + a*e
             theta = theta_i + omega*e
 
             IF (omega_i*omega.LT.0) THEN

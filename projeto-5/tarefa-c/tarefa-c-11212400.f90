@@ -88,7 +88,6 @@ CONTAINS
     
         ! Formatacao para o nome do arquivo de saida da velocidade(j) e posicao(j) angular
         WRITE(filename,'(A,2(I0,A))') 'saida-c-dados-theta0-',j,'-F0-',k,'-11212400'
-
         OPEN(10, file=filename)
 
         ! Definicao das variaveis inicias e constantes
@@ -112,7 +111,10 @@ CONTAINS
             omega_i = omega
             theta_i = theta
 
-            omega = omega_i - g*sin(theta_i)*e/a_l - gamma*omega_i*e + F_0*sin(C_omega*e*i)*e
+            ! aceleracao angular
+            a = -((g/a_l)*sin(theta_i))-(gamma*omega_i)+(F_0*sin(C_omega*i*e))
+
+            omega = omega_i + a*e
             theta = theta_i + omega*e
 
             WRITE(10,*) theta ! Escrever as variaveis no arquivo de saida
