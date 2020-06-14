@@ -24,17 +24,16 @@ CONTAINS
         theta = theta_0
     
         gamma = 5d-1
-        C_omega = 2/3
+        C_omega = 2d0/3d0
         omega = 0d0
         S_T = 0d0
-        tmax = 1.2d2
+        tmax = 3.6d2
         g = 9.8d0
         a_l = 9.8d0
         a_m = 1d0
         e = 3d-2
         t_0 = 0d0
         i = 0
-        n = 0
 
         ! Calculo da velocidade e da posicao angular em funcao da variacao do tempo, enquanto o tempo for menor que tmax
         ! Pendulo amortecido forcado
@@ -50,12 +49,23 @@ CONTAINS
             omega = omega_i + a*e
             theta = theta_i + omega*e
 
-            WRITE(10, '(F0.6,2(" ",F0.6))') e*i, theta, omega ! Escrever as variaveis no arquivo de saida
+            WRITE(10, '(F0.8,2(" ",F0.8))') e*i, theta, omega ! Escrever as variaveis no arquivo de saida
+
+            IF (omega_i*omega.LT.0) THEN
+                IF (t_0.GE.0) THEN
+                    S_T = i*e - t_0
+                END IF
+                t_0 = i*e
+            END IF
             
             i = i + 1
         END DO
 
         CLOSE(10)
+
+        S_T = 2*S_T ! calculo do periodo pelo metodo de Euler-Cromer com correcao
+
+        WRITE(*,'(A,I0,A,F0.6)') "Perido para F_0(",j,"): ", S_T
 
     END SUBROUTINE
 

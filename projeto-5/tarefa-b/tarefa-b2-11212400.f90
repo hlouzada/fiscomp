@@ -27,7 +27,6 @@ PROGRAM tarefa_b
         e = 1d-4 ! delta_t
         t_0 = 0d0
         i = 0
-        n = 0
 
         ! Calculo da velocidade e da posicao angular em funcao da variacao do tempo, enquanto o tempo for menor que tmax
         ! Pendulo amortecido forcado
@@ -46,8 +45,7 @@ PROGRAM tarefa_b
 
             IF (omega_i*omega.LT.0) THEN
                 IF (t_0.GE.0) THEN
-                    S_T = S_T + i*e - t_0
-                    n = n + 1
+                    S_T = i*e - t_0
                 END IF
                 t_0 = i*e
             END IF
@@ -55,7 +53,7 @@ PROGRAM tarefa_b
             i = i + 1
         END DO
 
-        S_T = 2*S_T/n ! calculo do periodo pelo metodo de Euler-Cromer com correcao
+        S_T = 2*S_T ! calculo do periodo pelo metodo de Euler-Cromer com correcao
 
         ! Calculo numerico da integral eliptica para o periodo
         T_solucaoNum = simpson(f, e - theta_0, theta_0 - e, i, theta_0) + 2*analitico(theta_0, a_l, g, e)
@@ -63,7 +61,7 @@ PROGRAM tarefa_b
         ! Periodo para theta pequeno
         T = 2*pi*sqrt(a_l/g)*(1+theta_0**2/16)
 
-        WRITE(10, '(F0.6,3(" ",F0.6))') theta_0, S_T, T_solucaoNum, T ! Escrever as variaveis no arquivo de saida
+        WRITE(10, '(F0.8,3(" ",F0.8))') theta_0, S_T, T_solucaoNum, T ! Escrever as variaveis no arquivo de saida
 
 
     END DO

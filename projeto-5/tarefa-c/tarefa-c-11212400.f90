@@ -52,10 +52,10 @@ PROGRAM tarefa_c
             ! Menor valor para D_theta >= (Precisao dupla) > -Inf
             IF(D_theta.ge.10d-45) THEN
 
-                ! Selecionando apenas os dados com uma melhor visualisacao no grafico
+                ! Selecionando apenas os dados com uma melhor visualisacao no grafico (tirar o "zeros" do xmgrace)
                 IF(D_theta.ge.1d-6) THEN
-                    WRITE(12,'(F0.6,1(" ",F0.6))') j*e, D_theta ! Escreve as variaveis no arquivos de saida, grafico delta_theta X t
-                    WRITE(13,'(F0.6,1(" ",F0.6))') j*e, log(D_theta) ! Escreve as variaveis no arquivos de saida, grafico ln(delta_theta) X t
+                    WRITE(12,'(F0.8,1(" ",F0.8))') j*e, D_theta ! Escreve as variaveis no arquivos de saida, grafico delta_theta X t
+                    WRITE(13,'(F0.8,1(" ",F0.8))') j*e, log(D_theta) ! Escreve as variaveis no arquivos de saida, grafico ln(delta_theta) X t
                 END IF
 
                 WRITE(14,*) j*e, log(D_theta) ! Escreve os dados excluindo os valores "-Inf" para exp_lyapunov

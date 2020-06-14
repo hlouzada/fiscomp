@@ -13,9 +13,10 @@ PROGRAM tarefa_a
     a_l = 9.8d0
     a_m = 1d0
     theta = pi/15
+    omega = 0d0
     e = 1d-4
     i = 0
-
+    
     ! Formatacao para o nome do arquivo de saida
     WRITE(filename,'(A,I0,A)') 'saida-a',1,'-11212400'
 
@@ -29,12 +30,12 @@ PROGRAM tarefa_a
         omega_i = omega
         theta_i = theta
 
-        omega = omega_i - g*theta_i*e/a_l
+        omega = omega_i - (g/a_l)*theta_i*e
         theta = theta_i + omega_i*e
 
         E = 0.5*a_m*(omega_i*a_l)**2 + a_m*g*a_l*(1-cos(theta_i)) ! Calculo da Energia do sistema (Potencial + Cinetica)
         
-        WRITE(10, '(F0.6,2(" ",F0.6))') e*i, theta, E ! Escrever as variaveis no arquivo de saida
+        WRITE(10, '(F0.8,2(" ",F0.8))') e*i, theta, E ! Escrever as variaveis no arquivo de saida
         
         i = i + 1
     END DO
@@ -62,12 +63,12 @@ PROGRAM tarefa_a
         omega_i = omega
         theta_i = theta
 
-        omega = omega_i - g*theta_i*e/a_l
+        omega = omega_i - (g/a_l)*theta_i*e
         theta = theta_i + omega*e ! Correcao -> utilizar o omega_{i+1} ao inves de omega_i
 
         E = 0.5*a_m*(omega_i*a_l)**2 + a_m*g*a_l*(1-cos(theta_i)) ! Calculo da Energia do sistema (Potencial + Cinetica)
         
-        WRITE(10, '(F0.6,2(" ",F0.6))') e*i, theta, E ! Escrever as variaveis no arquivo de saida
+        WRITE(10, '(F0.8,2(" ",F0.8))') e*i, theta, E ! Escrever as variaveis no arquivo de saida
         
         i = i + 1
     END DO

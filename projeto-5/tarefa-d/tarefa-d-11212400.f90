@@ -51,7 +51,7 @@ CONTAINS
             omega = omega_i + a*e
             theta = theta_i + omega*e
 
-            WRITE(10,'(F0.6,1(" ",F0.6))') theta, omega ! Escrever as variaveis no arquivo de saida
+            WRITE(10,'(F0.8,1(" ",F0.8))') theta, omega ! Escrever as variaveis no arquivo de saida
 
             i = i + 1
         END DO

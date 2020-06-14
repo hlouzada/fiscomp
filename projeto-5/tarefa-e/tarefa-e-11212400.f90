@@ -28,7 +28,7 @@ CONTAINS
         gamma = 5d-1
         C_omega = 2d0/3d0
         omega = 0d0
-        tmax = 5.2d3
+        tmax = 1.296d5 ! Obs para visualisação do padrao de F_0 = 0.5 pelo xmgrace foi utilizado tmax = 1.296d4
         g = 9.8d0
         a_l = 9.8d0
         a_m = 1d0
@@ -55,7 +55,7 @@ CONTAINS
             ! Calculo da secao de Poincare
             IF(abs(i*e-((n*pi)/C_omega)).LT.(e/2d0)) THEN
                 
-                WRITE(10,'(F0.16,1(" ",F0.16))') theta, omega
+                WRITE(10,'(F0.8,1(" ",F0.8))') theta, omega
 
                 n = n + 1
             END IF

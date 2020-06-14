@@ -18,15 +18,11 @@ PROGRAM tarefa_b
     gamma = 5d-1
     C_omega = 0d0
     omega = 0d0
-    S_T = 0d0
     tmax = 1.2d2
     g = 9.8d0
     a_l = 9.8d0
-    a_m = 1d0
     e = 1d-4
-    t_0 = 0d0
     i = 0
-    n = 0
 
     ! Calculo da velocidade e da posicao angular em funcao da variacao do tempo, enquanto o tempo for menor que tmax
     ! Pendulo amortecido forcado
@@ -43,7 +39,7 @@ PROGRAM tarefa_b
         omega = omega_i + a*e
         theta = theta_i + omega*e
 
-        WRITE(10, '(F0.6,1(" ",F0.6))') e*i, theta ! Escrever as variaveis no arquivo de saida
+        WRITE(10, '(F0.8,1(" ",F0.8))') e*i, theta ! Escrever as variaveis no arquivo de saida
             
         i = i + 1
     END DO
