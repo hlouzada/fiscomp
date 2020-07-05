@@ -1,64 +1,70 @@
-program tarefaa2
+program tarefa_a2
     implicit real(8) (a-h,o-z)
     character(70) filename
-    character(10) c_planeta
+    character(70) name_planet
     parameter (pi=4d0*atan(1d0))
-    dimension ri(2), rmi(2), d2rdt2(2), v(2)
+    dimension vel_planet(2), pos_i_planet(2), d2rdt2_planet(2)
+    dimension pos_planet(2), raux_planet(2)
+    
+    T_earth = 1d0
+    sun_mass = 2d30
+    
+    e = 1d-4 !delta t
 
-    e = 1d-2
-    Tt = 1d0
-    a_Ms = 2d30
-
-    open(20, file='entrada-a-11212400.dat')
+    open(20, file='entrada-a-11212400')
 
     do j = 1, 9
-        read(20,*) c_planeta, a_massa, a_raio, a_exce
 
-        write(filename, '(A,A,A)') 'saida-a2-', trim(c_planeta), '-11212400.dat'
+        read(20,*) name_planet, planet_mass, radius_planet, exce_planet ! OBS: radius_planet = radius_planet_absolute/radius_earth
 
-        Tp = Tt*sqrt(a_raio**3d0)
-        GMs = ((2*pi)**2)*(a_raio**3)/(Tp**2)
+        write(filename, '(A,A,A)') 'saida-a2-', trim(name_planet), '-11212400'
+        write(*,'(A,A,A)') "Calculations for planet ", trim(name_planet), ":"
 
-        v0 = sqrt(GMs)*sqrt((1-a_exce)/(a_raio*(1+a_exce)) * (1 +a_massa/a_Ms))
-        v = (/0d0, v0 /)
+        T_planet = T_earth*sqrt(radius_planet**3d0)
+        GMs = ((2*pi)**2)*(radius_planet**3)/(T_planet**2)
 
-        write(*,*) c_planeta, dnorm(v), Tp/Tt
-    
-        rmi = (/ a_raio, 0d0 /)
-        ri = rmi +v*e
+        ! Calculo da velocidade Inicial:
+        v0_planet = sqrt(GMs)*sqrt((1-exce_planet)/(radius_planet*(1+exce_planet)) * (1 +planet_mass/sun_mass))
+        write(*,'(A,F0.8)') 'Initial Velocity: ', v0_planet 
+        
+        vel_planet = (/0d0, v0_planet /)
+        
+        write(*,'(A,F0.8)') "Kepler's Constant:", (T_planet**2)/(radius_planet**3)
 
+        pos_i_planet = (/ radius_planet, 0d0 /)
+        pos_planet = pos_i_planet + vel_planet*e
+        
         open(10, file=filename)
 
-        write(10, *) ri
+        write(10, *) pos_planet
 
         ! Metodo de Verlet
-        do i = 1, int(Tp/e)+1
-            d2rdt2 = -GMs*ri/dnorm(ri)**3
+        do i = 1, int(T_planet/e)+1
+            d2rdt2_planet = -GMs*pos_planet/dnorm(pos_planet)**3
 
-            raux = ri
-            ri = 2*ri - rmi + d2rdt2*e**2
-            rmi = raux
+            raux_planet = pos_planet
+            pos_planet = 2*pos_planet - pos_i_planet + d2rdt2_planet*e**2
+            pos_i_planet = raux_planet
 
-            write(10, *) ri
+            write(10, *) pos_planet
+
         end do
 
         close(10)
+
     end do
 
+    close(20)
+
 contains
-    function dnorm(r)
+    ! Calculo da distancia normal
+    real(8) function dnorm(vector)
         implicit real(8) (a-h,o-z)
-        dimension r(2)
-        dnorm = sqrt(r(1)**2 + r(2)**2)
-        return
-    end function
+        dimension vector(2)
 
-    function ac_gravit(G, aM, r)
-        implicit real(8) (a-h,o-z)
-        dimension r(2), ac_gravit(2)
+        dnorm = sqrt(vector(1)**2 + vector(2)**2)
 
-        ac_gravit = G*aM*r/dnorm(r)**3
-        return
-    end function
+    end function dnorm
 
-end program tarefaa2
+
+end program tarefa_a2

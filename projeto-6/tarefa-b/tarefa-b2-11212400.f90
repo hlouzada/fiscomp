@@ -15,7 +15,7 @@ contains
         sun_mass = 2d30
         GMs = (2*pi)**2
         
-        e = 1d-4 ! delta t
+        e = 1d-3 ! delta t
         tmax = 6d0
 
         earth_mass = 6d24
